@@ -1,18 +1,18 @@
 function countLetters(str){
   var result = {
   }
-  var noSpaces = str.split(' ').join('').toLowerCase();
-  noSpaces = noSpaces.split('')
-  //console.log(noSpaces)
+  var inputCharacters = str.split(' ').join('').toLowerCase();
+  inputCharacters = inputCharacters.split('')
+  //console.log(inputCharacters)
 
-  for(var i = 0; i < noSpaces.length; i++ ){
-    //console.log(noSpaces[i])
-    if(!result.hasOwnProperty(noSpaces[i])) {
-      //result[noSpaces[i]] = noSpaces[i];
-      result[noSpaces[i]] = 1
+  for(var i = 0; i < inputCharacters.length; i++ ){
+    //console.log(inputCharacters[i])
+    if(!result.hasOwnProperty(inputCharacters[i])) {
+      //result[inputCharacters[i]] = inputCharacters[i];
+      result[inputCharacters[i]] = 1
 
     }else{
-      result[noSpaces[i]] ++
+      result[inputCharacters[i]] ++
     }
   }
   console.log(result)
