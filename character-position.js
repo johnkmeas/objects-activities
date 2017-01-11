@@ -3,29 +3,24 @@ function positionLetters(str){
   var inputCharacters = str.toLowerCase().split('');
 
   //console.log(inputCharacters);
-  var indexOfCharacter;
-
   for(var i = 0; i < inputCharacters.length; i++ ){
-    indexOfCharacter = i
     //console.log('input: ',inputCharacters[i],inputCharacters )
-    if(inputCharacters[i] == ' '){
+    if(inputCharacters[i] == ' ') {
       //nothing in here
-    }else if(!result.hasOwnProperty(inputCharacters[i])) {
-      result[inputCharacters[i]] = [indexOfCharacter];
-
-    }else{
-      //console.log(inputCharacters[i],'indexes',indexOfCharacter)
-      result[inputCharacters[i]].push(indexOfCharacter);
+    }else if (!result.hasOwnProperty(inputCharacters[i])) {
+      result[inputCharacters[i]] = [i];
+    }else {
+      //console.log(inputCharacters[i],'indexes',i)
+      result[inputCharacters[i]].push(i);
     }
   }
-
   console.log(result);
   //return result
 }
 
 var inputString = "lighthouse in the house";
 console.log('Index of each character in:','\n', inputString);
-console.log('-------------------')
+console.log('-------------------');
 positionLetters(inputString);
 
 // returning multiple numbers to represent all the places in the string that it shows up.
