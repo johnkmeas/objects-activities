@@ -39,9 +39,11 @@ function calculateSalesTax(salesData, taxRates) {
    //    console.log(sales)
    //    console.log(taxRates[province])
    // }
-   var totalTax = salesData * taxRates
-   console.log(totalTax)
-   console.log(salesData, taxRates)
+   tax = salesTaxRates[taxRates]
+   var totalTax = salesData * tax
+   // console.log(totalTax)
+   // console.log(salesData, taxRates)
+   return totalTax
 }
 
 function sumArray(arr){
@@ -50,7 +52,7 @@ function sumArray(arr){
     total += i
   })
 //console.log(total)
-  return calculateSalesTax(total, salesTaxRates.BC)
+  return total
 
  // console.log(string)
 }
@@ -63,20 +65,25 @@ function salesTaxReport(salesData, taxRates) {
     //console.log(salesData[i].value())
      companyName = salesData[i].name
      province = salesData[i].province
-     sales = salesData[i].sales
+     console.log(province)
+     var sumSales = sumArray(salesData[i].sales)
      //console.log(taxRates[province])
      //
-
+     var sumTaxes = calculateSalesTax(sumSales, province)
      //console.log(province)
      //salesTaxRates
     //console.log(companyName)
   if(!output.hasOwnProperty(companyName)){
-    output[companyName] = { totalSales: salesData[i].sales }
+    output[companyName] = { totalSales: sumSales }
+    output[companyName].totalTaxes =  sumTaxes
+    //console.log(sumArray(totalSales))
   }else{
       //salesData[i];
       //var arr3 = output[companyName].concat(salesData[i]);
-      var combineSales = output[companyName].totalSales.concat(sales)
-      output[companyName] = { totalSales: combineSales }
+      // var combineSales = output[companyName].totalSales.concat(totalSales)
+      //output[companyName].totalSales.concat(totalSales)
+      output[companyName].totalSales += sumSales
+      output[companyName].totalTaxes += sumTaxes
       //output[companyName] = output[companyName].totalSales.concat(sales)
       //console.log(output[companyName].totalSales.concat(sales))
       //console.log(companyName, combineSales)
@@ -85,8 +92,8 @@ function salesTaxReport(salesData, taxRates) {
     //console.log(salesData[i].name === 'Telus')
     //console.log(output)
   }
-//console.log(output)
 
+console.log(output)
 
 }
 
