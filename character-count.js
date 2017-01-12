@@ -1,9 +1,9 @@
 function countLetters(str){
-  var result = {
-  }
+  var result = {};
+
   var inputCharacters = str.split(' ').join('').toLowerCase();
   inputCharacters = inputCharacters.split('')
-  //console.log(inputCharacters)
+  console.log(inputCharacters)
 
   for(var i = 0; i < inputCharacters.length; i++ ){
     //console.log(inputCharacters[i])
@@ -18,6 +18,7 @@ function countLetters(str){
   console.log(result)
   //return result
 }
+
 countLetters("lighthouse in the house")
 // results wanted
 // {
