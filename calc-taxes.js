@@ -23,81 +23,45 @@ var companySalesData = [
 ];
 
 var output = {};
-var sales;
 
-//var totalTaxes = 'totalSales';
-var companyName;
-var province;
 function calculateSalesTax(salesData, taxRates) {
   // Implement your code here
-   // for(var i = 0; i < salesData.length; i++){
-   //   companyName = salesData[i].name
-   //   sales = salesData[i].sales
-   //   province = salesData[i].province
-   //   sales = salesData[i].sales
-   //   sales
-   //    console.log(sales)
-   //    console.log(taxRates[province])
-   // }
-   tax = salesTaxRates[taxRates]
-   var totalTax = salesData * tax
-   // console.log(totalTax)
-   // console.log(salesData, taxRates)
-   return totalTax
+  var tax = salesTaxRates[taxRates];
+  var totalTax = salesData * tax;
+  return totalTax;
 }
 
 function sumArray(arr){
   var total = 0;
   arr.forEach(function(i){
-    total += i
-  })
-//console.log(total)
-  return total
-
- // console.log(string)
+    total += i;
+  });
+  return total;
 }
-sumArray(companySalesData[1].sales )
+
 
 function salesTaxReport(salesData, taxRates) {
+  var companyName;
+  var province;
   for(var i = 0; i < salesData.length; i++){
+    companyName = salesData[i].name;
+    province = salesData[i].province;
+    var sumSales = sumArray(salesData[i].sales);
+    var sumTaxes = calculateSalesTax(sumSales, province);
 
-    // output[i] = salesData[i].name;
-    //console.log(salesData[i].value())
-     companyName = salesData[i].name
-     province = salesData[i].province
-     console.log(province)
-     var sumSales = sumArray(salesData[i].sales)
-     //console.log(taxRates[province])
-     //
-     var sumTaxes = calculateSalesTax(sumSales, province)
-     //console.log(province)
-     //salesTaxRates
-    //console.log(companyName)
-  if(!output.hasOwnProperty(companyName)){
-    output[companyName] = { totalSales: sumSales }
-    output[companyName].totalTaxes =  sumTaxes
-    //console.log(sumArray(totalSales))
-  }else{
-      //salesData[i];
-      //var arr3 = output[companyName].concat(salesData[i]);
-      // var combineSales = output[companyName].totalSales.concat(totalSales)
-      //output[companyName].totalSales.concat(totalSales)
-      output[companyName].totalSales += sumSales
-      output[companyName].totalTaxes += sumTaxes
-      //output[companyName] = output[companyName].totalSales.concat(sales)
-      //console.log(output[companyName].totalSales.concat(sales))
-      //console.log(companyName, combineSales)
+    if(!output.hasOwnProperty(companyName)){
+      output[companyName] = { totalSales: sumSales };
+      output[companyName].totalTaxes =  sumTaxes;
+    }else{
+      output[companyName].totalSales += sumSales;
+      output[companyName].totalTaxes += sumTaxes;
     }
-    //console.log(salesData[i].sales)
-    //console.log(salesData[i].name === 'Telus')
-    //console.log(output)
   }
-
-console.log(output)
-
+  return output;
 }
 
 var results = salesTaxReport(companySalesData, salesTaxRates);
+console.log(results);
 //calculateSalesTax(companySalesData, salesTaxRates)
 
 //console.log(output)
